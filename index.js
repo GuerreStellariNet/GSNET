@@ -12,12 +12,13 @@ app.get('/', (req, res) => {
 });
 
 app.post('/webhook', async (req, res) => {
-  const message = req.body.message;
+  const { queryResult } = req.body;
+  const argomento = queryResult.parameters.argomento;
 
   try {
-    const response = await axios.post('https://your-render-app-url.onrender.com/webhooks/rest/webhook', {
+    const response = await axios.post('https://gsnet.onrender.com/webhooks/rest/webhook', {
       sender: 'user',
-      message: message
+      message: argomento
     });
     const fulfillmentMessages = response.data.map(msg => ({ text: msg.text }));
     res.json({ fulfillmentMessages });
