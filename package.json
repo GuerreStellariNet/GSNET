@@ -1,0 +1,15 @@
+{
+  "name": "rasa-proxy",
+  "version": "1.0.0",
+  "description": "Proxy per Rasa",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "keep-alive": "node keep-alive.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0",
+    "axios": "^0.21.1"
+  }
+}
