@@ -4,8 +4,7 @@
   "description": "Proxy per Rasa",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "keep-alive": "node keep-alive.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.17.1",
