@@ -16,12 +16,9 @@ app.post('/webhook', async (req, res) => {
   const argomento = queryResult.parameters.argomento;
 
   try {
-    const response = await axios.post('https://gsnet.vercel.app/webhooks/rest/webhook', {
-      sender: 'user',
-      message: argomento
-    });
-    const fulfillmentMessages = response.data.map(msg => ({ text: msg.text }));
-    res.json({ fulfillmentMessages });
+    // Simuliamo una risposta per vedere se il webhook sta funzionando correttamente
+    const responseMessage = `Hai cercato articoli su ${argomento}.`;
+    res.json({ fulfillmentText: responseMessage });
   } catch (error) {
     res.status(500).send("Errore nella comunicazione con Rasa.");
   }
@@ -30,3 +27,4 @@ app.post('/webhook', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
