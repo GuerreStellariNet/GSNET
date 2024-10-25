@@ -12,14 +12,15 @@ app.get('/', (req, res) => {
 });
 
 app.post('/webhook', async (req, res) => {
-  const { queryResult } = req.body;
-  const argomento = queryResult.parameters.argomento;
-
   try {
-    // Simuliamo una risposta per vedere se il webhook sta funzionando correttamente
+    const { queryResult } = req.body;
+    const argomento = queryResult.parameters.argomento;
+
+    // Simula una risposta per verificare il corretto funzionamento del webhook
     const responseMessage = `Hai cercato articoli su ${argomento}.`;
     res.json({ fulfillmentText: responseMessage });
   } catch (error) {
+    console.error("Errore nella gestione della richiesta:", error);
     res.status(500).send("Errore nella comunicazione con Rasa.");
   }
 });
