@@ -30,7 +30,6 @@ app.post('/webhook', async (req, res) => {
     console.log("Making request to Google Custom Search");
     const response = await axios.get(`https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=90d22e418744f4392&q=${encodeURIComponent(query)}+site=guerrestellari.net`);
 
-    console.log("Google Custom Search response:", response.data);
     const results = response.data.items.map(item => item.title).join(', ');
 
     const responseMessage = `Risultati trovati per '${query}': ${results}`;
@@ -42,6 +41,3 @@ app.post('/webhook', async (req, res) => {
 });
 
 module.exports = app;
-
-
-
